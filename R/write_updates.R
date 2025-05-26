@@ -28,4 +28,3 @@ write_updates_csv = function(dat) {
     }
 }
 
-print("test")
