@@ -1,0 +1,9 @@
+# ideas , suggestion and read blocks
+
+
+# clean major fucntion
+- check if cleaned version of the files has same amount of rows as in raw file
+- may be add the argument slice Year for filter the data
+- add argument if user wants college names in short or long version
+- keep on addding college names for recoding
+- clean file haveing same order of field names as user's file
