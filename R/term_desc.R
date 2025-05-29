@@ -1,3 +1,12 @@
+#' Term codes to term description
+#' @description
+#' This function converts given term codes into term description. For instance, the terms: 202510,202520, 202530 would be described as
+#' Fall 2024, Spring 2025 and Summer 2025, respectively.
+#'
+#' @param term  a six character long term code
+#'
+#'
+#'@export
 term_desc = Vectorize(
     function(term) {
         if(nchar(term) != 6) stop("Term needs to 6 character long !!")

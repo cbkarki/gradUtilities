@@ -2,13 +2,13 @@
 % Please edit documentation in R/term2_ay.R
 \name{term2_ay}
 \alias{term2_ay}
-\title{term to term description}
+\title{Term codes to Academic Year}
 \usage{
 term2_ay(term)
 }
 \arguments{
-\item{term}{A numeric value or vector.}
+\item{term}{a numeric value of the term code.}
 }
 \description{
-Converts numeric term code to readable term descriptions
+Converts term code to academic year. For instance 202510,202520,202530 are the term codes for Academic Year 2024-2025.
 }

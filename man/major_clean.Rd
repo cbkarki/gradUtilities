@@ -9,7 +9,7 @@ major_clean(
   file2clean,
   fieldnames,
   ug = FALSE,
-  collagename = "long"
+  collegename = "long"
 )
 }
 \arguments{
@@ -23,12 +23,17 @@ the raw records while the next four updated or the corrections.}
 \item{fieldnames}{a vector of column names in the file to be cleaned. Supply the columns containing major_code, major_description, college
 and  the level in the file supplied to the above file2clean argument. The output file will contain the same columns
 in same order of the supplied file with cleaned columns supplied as filed names. Please input the vector of fieldnames in the order of
-and exactly like c("major_code","major_description","college","level")}
+and exactly like \code{c("major_code","major_description","college","level")}}
 
 \item{ug}{a category specially in level field, representing undergraduates 'UG'. By default it
 is False because most of the project and analysis are performed for graduate students. If Ture it
 the UG level is not filtered out and may produced various updates suggestion because the crosswalk
 does not contain updates regarding UG students.}
+
+\item{collegename}{an option to choose the longer or shorter version of the collage
+names. By default it is set to \code{"long"}. If needed the \code{"short"} can be supplied to the
+collegename argument in order to get short version of the college name. For example,
+Collage of Liberal Arts is the full name while Liberal Arts is the shorter name.}
 }
 \value{
 If discrepancies are found, a data frame of unmatched records is returned
@@ -45,8 +50,8 @@ major_clean(crosswalk_df, student_df, c("Major", "MajorCode", "College", "Level"
 }
 }
 \author{
-Chitra Karki \email{chitr@miners.utep.edu}
-Data Science Program, Mathematical Sciences
-University of Texas at El Paso
+Chitra Karki \email{cbkarki@miners.utep.edu}
+Data Science Program, Mathematical Sciences,
+University of Texas at El Paso,
 Graduate School
 }

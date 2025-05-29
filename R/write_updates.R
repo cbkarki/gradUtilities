@@ -4,7 +4,9 @@ write_updates_csv = function(dat) {
 
     if (toupper(answer) == "Y") {
         cat("\nSelect a directory to save the file.\n")
+
         dir_path <- tcltk::tk_choose.dir(default = getwd())
+
 
         if(is.na(dir_path) || dir_path == "") {stop("No directory selected. Please select a directory to save file")}
 

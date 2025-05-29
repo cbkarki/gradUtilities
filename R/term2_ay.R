@@ -23,16 +23,16 @@
 #
 # }
 
-#' term to term description
+#' Term codes to Academic Year
 #' @description
-#' Converts numeric term code to readable term descriptions
+#' Converts term code to academic year. For instance 202510,202520,202530 are the term codes for Academic Year 2024-2025.
 #'
-#' @param term A numeric value or vector.
+#' @param term a numeric value of the term code.
 #' @export
 
 term2_ay = function(term) {
 
-    if(nchar(term) != 6) {
+    if(all(nchar(term) ) != 6) {
         stop("term should be of 6 character long !!")
     }
 
