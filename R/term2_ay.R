@@ -28,15 +28,30 @@
 #' Converts term code to academic year. For instance 202510,202520,202530 are the term codes for Academic Year 2024-2025.
 #'
 #' @param term a numeric value of the term code.
+#'
+#' @examples
+#' # example code
+#'  term = c("202510", "202520")
+#'  term2_ay(term)
+#'
+#' @author
+#' Chitra Karki \email{cbkarki@miners.utep.edu}
+#' Data Science Program, Mathematical Sciences,
+#' University of Texas at El Paso,
+#' Graduate School
+#'
+#' @return Returns the respective Academic Years to which the supplied terms via function argument.
+#'
 #' @export
 
 term2_ay = function(term) {
 
-    if(all(nchar(term) ) != 6) {
+    if(all(nchar(term)  != 6)) {
         stop("term should be of 6 character long !!")
-    }
+    } else {
+        ay = paste0(as.numeric(substr(term,1,4)) - 1, "-", substr(term,1,4))
+        }
 
-    ay = paste0(as.numeric(substr(term,1,4)) - 1, "-", substr(term,1,4))
-    return(ay)
+        return(ay)
 }
 

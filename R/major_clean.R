@@ -46,9 +46,9 @@
 #' \dontrun{
 #' major_clean(crosswalk_df, student_df, c("Major", "MajorCode", "College", "Level"))
 #' }
-major_clean <- function(crosswalk, file2clean, fieldnames, ug = FALSE) {
-    # function code here
-}
+#'major_clean <- function(crosswalk, file2clean, fieldnames, ug = FALSE) {
+ #'   # function code here
+#'}
 #'
 #' @export
 #'

@@ -9,6 +9,21 @@ term2_ay(term)
 \arguments{
 \item{term}{a numeric value of the term code.}
 }
+\value{
+Returns the respective Academic Years to which the supplied terms via function argument.
+}
 \description{
 Converts term code to academic year. For instance 202510,202520,202530 are the term codes for Academic Year 2024-2025.
+}
+\examples{
+# example code
+ term = c("202510", "202520")
+ term2_ay(term)
+
+}
+\author{
+Chitra Karki \email{cbkarki@miners.utep.edu}
+Data Science Program, Mathematical Sciences,
+University of Texas at El Paso,
+Graduate School
 }

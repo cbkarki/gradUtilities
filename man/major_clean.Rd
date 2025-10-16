@@ -48,6 +48,10 @@ which contains up to date records of change in major and its respective alliance
 \dontrun{
 major_clean(crosswalk_df, student_df, c("Major", "MajorCode", "College", "Level"))
 }
+major_clean <- function(crosswalk, file2clean, fieldnames, ug = FALSE) {
+  # function code here
+}
+
 }
 \author{
 Chitra Karki \email{cbkarki@miners.utep.edu}
