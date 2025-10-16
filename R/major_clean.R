@@ -214,7 +214,7 @@ major_clean <- function(crosswalk, file2clean,fieldnames, ug = FALSE, collegenam
         # data clean names and ordering the coln names as of original file
         dat_clean <- dat_clean %>%
             select(!all_of(fieldnames)) %>%
-            rename(!!!rename_map) %>%
+            rename(!!!rename_map) %>% # works like key:dictinory
             select(names(dat))
 
         # writing output
