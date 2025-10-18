@@ -1,7 +1,9 @@
 #' Cleaning the major_code, major_description, college and level
 #' @description
 #' This functions cleans the major_code, major_descriptions college and level with the help of crosswalk table
-#' which contains up to date records of change in major and its respective alliances.
+#' which contains up to date records of change in major and its respective alliances. If new records are present in those fields, the
+#' program will provide the new records. We need to verify those new records and append to the existing crosswalk and re-execute this
+#' program
 #'
 #' @param crosswalk a data-frame containing raw major_codes, major_descriptions, college and level. The function also give
 #' some suggestion if the file2clean contains new record of majorcode which is not already present in the crosswalk. In such case
@@ -239,5 +241,4 @@ major_clean <- function(crosswalk, file2clean,fieldnames, ug = FALSE, collegenam
 }
 
 # major_clean(major_list,degrees_awarded,fieldnames = fieldnames,ug = FALSE)
-
 

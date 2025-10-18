@@ -41,7 +41,9 @@ and optionally saved to file. Otherwise, a message is printed.
 }
 \description{
 This functions cleans the major_code, major_descriptions college and level with the help of crosswalk table
-which contains up to date records of change in major and its respective alliances.
+which contains up to date records of change in major and its respective alliances. If new records are present in those fields, the
+program will provide the new records. We need to verify those new records and append to the existing crosswalk and re-execute this
+program
 }
 \examples{
 

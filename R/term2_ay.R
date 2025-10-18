@@ -27,7 +27,7 @@
 #' @description
 #' Converts term code to academic year. For instance 202510,202520,202530 are the term codes for Academic Year 2024-2025.
 #'
-#' @param term a numeric value of the term code.
+#' @param term a numeric/character value of the term code.
 #'
 #' @examples
 #' # example code

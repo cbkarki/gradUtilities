@@ -7,7 +7,7 @@
 term2_ay(term)
 }
 \arguments{
-\item{term}{a numeric value of the term code.}
+\item{term}{a numeric/character value of the term code.}
 }
 \value{
 Returns the respective Academic Years to which the supplied terms via function argument.
