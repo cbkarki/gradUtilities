@@ -21,7 +21,7 @@ devtools::install_github("cbkarki/gradUtilities")
 
 
 ## Load the library to R-environment.
-```{r setup-packages,include=FALSE}
+```{r setup-packages,include=FALSE,echo=TRUE}
 library(gradUtilities)
 library(dplyr)
 ```

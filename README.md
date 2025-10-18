@@ -15,6 +15,11 @@ devtools::install_github("cbkarki/gradUtilities")
 
 ## Load the library to R-environment.
 
+``` r
+library(gradUtilities)
+library(dplyr)
+```
+
 ## major_clean
 
 This functions cleans the major_code, major_descriptions college and
@@ -32,9 +37,9 @@ system. If no updates are present in the file2clean, then the program
 will prompt users where to save the cleaned file.
 
 ``` r
-crosswalk = readxl::read_xlsx("C:/Users/chitr/OneDrive - University of Texas at El Paso/Core Data/Source Data/Crosswalk Table.xlsx", sheet = "Consolidated Major List Update")
+crosswalk = readxl::read_xlsx("C:/Users/chitr/............................./Crosswalk Table.xlsx", sheet = "Consolidated Major List Update")
 
-file2clean = readxl::read_xlsx("C:/Users/chitr/OneDrive - University of Texas at El Paso/Core Data/Source Data/Application and Admissions.xlsx", sheet = "Sheet1")
+file2clean = readxl::read_xlsx("C:/Users/chitr/............................../Application and Admissions.xlsx", sheet = "Sheet1")
 
 fieldnames = c("MajorCode", "MajorDescription", "CollegeDescription", "AdmissionTypeCode") 
 
