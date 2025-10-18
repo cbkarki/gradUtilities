@@ -15,6 +15,36 @@ devtools::install_github("cbkarki/gradUtilities")
 
 ## Load the library to R-environment.
 
+## major_clean
+
+This functions cleans the major_code, major_descriptions college and
+level with the help of crosswalk table which contains up to date records
+of change in major and its respective alliances. If new records are
+present in those fields, the program will provide the new records. once
+the function is executed it will prompt, to write output as csv file in
+used picked directory if new records are presents in the file2clean
+other then in the crosswalk. run “?major_clean” for more details on
+operating the program. We need to verify those new records and append to
+the existing crosswalk and re-execute this program. the verification
+requires some domain knowledge how majorcodes, majordescriptions,
+college and level are encoded and their existence in the university
+system. If no updates are present in the file2clean, then the program
+will prompt users where to save the cleaned file.
+
+``` r
+crosswalk = readxl::read_xlsx("C:/Users/chitr/OneDrive - University of Texas at El Paso/Core Data/Source Data/Crosswalk Table.xlsx", sheet = "Consolidated Major List Update")
+
+file2clean = readxl::read_xlsx("C:/Users/chitr/OneDrive - University of Texas at El Paso/Core Data/Source Data/Application and Admissions.xlsx", sheet = "Sheet1")
+
+fieldnames = c("MajorCode", "MajorDescription", "CollegeDescription", "AdmissionTypeCode") 
+
+major_clean(crosswalk,file2clean,fieldnames)
+```
+
+The prompts popups are demonstrated in the image below.
+
+<img src="inst/images/major_clean.png" width="624" style="display: block; margin: auto;" />
+
 ## date2_term
 
 This function converts given date to the respective term. At the
@@ -97,32 +127,3 @@ records are presents in the file2clean other then in the crosswalk.
 #> 2 202420 2023-2024
 #> 3 202430 2023-2024
 ```
-
-## major_clean
-
-This functions cleans the major_code, major_descriptions college and
-level with the help of crosswalk table which contains up to date records
-of change in major and its respective alliances. If new records are
-present in those fields, the program will provide the new records. once
-the function is executed it will prompt, to write output as csv file in
-used picked directory if new records are presents in the file2clean
-other then in the crosswalk. run “?major_clean” for more details on
-runing the program. We need to verify those new records and append to
-the existing crosswalk and re-execute this program. the verification
-requires some domain knowledge how majorcodes, majordescriptions,
-college and level are encoded and their existence in the university
-system.
-
-``` r
-crosswalk = readxl::read_xlsx("C:/Users/chitr/OneDrive - University of Texas at El Paso/Core Data/Source Data/Crosswalk Table.xlsx", sheet = "Consolidated Major List Update")
-
-file2clean = readxl::read_xlsx("C:/Users/chitr/OneDrive - University of Texas at El Paso/Core Data/Source Data/Application and Admissions.xlsx", sheet = "Sheet1")
-
-fieldnames = c("MajorCode", "MajorDescription", "CollegeDescription", "AdmissionTypeCode") 
-
-major_clean(crosswalk,file2clean,fieldnames)
-```
-
-The prompts popups are demonstrated in the image below.
-
-<img src="inst/images/major_clean.png" width="624" style="display: block; margin: auto;" />
