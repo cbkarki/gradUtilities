@@ -9,7 +9,7 @@ major_clean(
   file2clean,
   fieldnames,
   ug = FALSE,
-  collegename = "long"
+  collegename = c("long", "short")
 )
 }
 \arguments{
@@ -46,12 +46,29 @@ program will provide the new records. We need to verify those new records and ap
 program
 }
 \examples{
-
 \dontrun{
-major_clean(crosswalk_df, student_df, c("Major", "MajorCode", "College", "Level"))
-}
-major_clean <- function(crosswalk, file2clean, fieldnames, ug = FALSE) {
-  # function code here
+# libraries
+lapply(c("tidyverse","readxl","openxlsx"),library,character.only = TRUE)
+
+ # cross walk for cleaning majors
+crosswalk <-
+read_xlsx("C:/Users/chitr/.............../Crosswalk Table.xlsx",
+                     sheet = "Consolidated Major List Update")
+
+ # file2clean
+ degrees_awarded <-
+ read_xlsx("C:/Users/chitr/................/Degrees Awarded.xlsx",sheet = "Degrees Awarded")
+
+# names of the field to be cleanded in file2clean
+fieldnames <- c("Major","MajorCode","College","Level")
+
+# long versions of the college names
+major_clean(crosswalk, degrees_awarded,fieldnames)
+
+# long versions of the college names
+major_clean(crosswalk, degrees_awarded,fieldnames,collegenane = "short")
+
+# After running the function please follow the prompts on the console to get the clean version of the file.
 }
 
 }

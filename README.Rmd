@@ -15,13 +15,15 @@ knitr::opts_chunk$set(
 This package is packed with routine functions utilized most frequently in data processing at Graduate School - UTEP.
 
 ## Installation
+
 ```{r install-package, eval=FALSE,echo=TRUE}
 devtools::install_github("cbkarki/gradUtilities")
 ```
 
 
 ## Load the library to R-environment.
-```{r setup-packages,include=FALSE,echo=TRUE}
+
+```{r setup-packages, echo=TRUE, results='hide', message=FALSE, warning=FALSE}
 library(gradUtilities)
 library(dplyr)
 ```
@@ -32,9 +34,9 @@ library(dplyr)
  program will provide the new records.  once the function is executed it will prompt, to write output as csv file in used picked directory if new records are presents in the file2clean other then in the crosswalk. run "?major_clean" for more details on operating the program. We need to verify those new records and append to the existing crosswalk and re-execute this program. the verification requires some domain knowledge how majorcodes, majordescriptions, college and level are encoded and their existence in the university system. If no updates are present in the file2clean, then the program will prompt users where to save the cleaned file.
  
 ```{r eval=FALSE,echo=TRUE}
-crosswalk = readxl::read_xlsx("C:/Users/chitr/OneDrive - University of Texas at El Paso/Core Data/Source Data/Crosswalk Table.xlsx", sheet = "Consolidated Major List Update")
+crosswalk = readxl::read_xlsx("C:/Users/chitr/............................./Crosswalk Table.xlsx", sheet = "Consolidated Major List Update")
 
-file2clean = readxl::read_xlsx("C:/Users/chitr/OneDrive - University of Texas at El Paso/Core Data/Source Data/Application and Admissions.xlsx", sheet = "Sheet1")
+file2clean = readxl::read_xlsx("C:/Users/chitr/............................../Application and Admissions.xlsx", sheet = "Sheet1")
 
 fieldnames = c("MajorCode", "MajorDescription", "CollegeDescription", "AdmissionTypeCode") 
 

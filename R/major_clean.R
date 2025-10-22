@@ -44,23 +44,37 @@
 
 #'
 #' @examples
-#'
 #' \dontrun{
-#' major_clean(crosswalk_df, student_df, c("Major", "MajorCode", "College", "Level"))
+#' # libraries
+#' lapply(c("tidyverse","readxl","openxlsx"),library,character.only = TRUE)
+#'
+#'  # cross walk for cleaning majors
+#' crosswalk <-
+#' read_xlsx("C:/Users/chitr/.............../Crosswalk Table.xlsx",
+#'                      sheet = "Consolidated Major List Update")
+#'
+#'  # file2clean
+#'  degrees_awarded <-
+#'  read_xlsx("C:/Users/chitr/................/Degrees Awarded.xlsx",sheet = "Degrees Awarded")
+#'
+#' # names of the field to be cleanded in file2clean
+#' fieldnames <- c("Major","MajorCode","College","Level")
+#'
+#' # long versions of the college names
+#' major_clean(crosswalk, degrees_awarded,fieldnames)
+#'
+#'# long versions of the college names
+#'major_clean(crosswalk, degrees_awarded,fieldnames,collegenane = "short")
+#'
+#'# After running the function please follow the prompts on the console to get the clean version of the file.
 #' }
-#'major_clean <- function(crosswalk, file2clean, fieldnames, ug = FALSE) {
- #'   # function code here
-#'}
 #'
 #' @export
-#'
-#'
-# current_students <-
-#      read_xlsx("C:/Users/chitr/OneDrive - University of Texas at El Paso/Core Data/Source Data/Data Updates/Current Students Apr. 28, 2025.xlsx")
-#
-# degrees_awarded <- read_xlsx("C:/Users/chitr/OneDrive - University of Texas at El Paso/Core Data/Source Data/Degrees Awarded.xlsx")
-#  # cross walk for cleaning majors
-#  major_list <- read_xlsx("C:/Users/chitr/OneDrive - University of Texas at El Paso/Core Data/Source Data/Crosswalk Table.xlsx",
+
+
+
+ # cross walk for cleaning majors
+#  crosswalk <- read_xlsx("C:/Users/chitr/OneDrive - University of Texas at El Paso/Core Data/Source Data/Crosswalk Table.xlsx",
 #                         sheet = "Consolidated Major List Update")
 #
 # lapply(c("tidyverse","readxl","openxlsx"),library,character.only = TRUE)
@@ -68,7 +82,7 @@
 # fieldnames <- c("Major","MajorCode","College","Level")
 
 
-major_clean <- function(crosswalk, file2clean,fieldnames, ug = FALSE, collegename = "long") {
+major_clean <- function(crosswalk, file2clean,fieldnames, ug = FALSE, collegename = c("long","short")) {
 
     major_list <- crosswalk
     dat <- file2clean
@@ -159,6 +173,9 @@ major_clean <- function(crosswalk, file2clean,fieldnames, ug = FALSE, collegenam
             major_list %>%
             select(!c(Notes)) %>%
             mutate(College_short = coalesce(College...7,College...3),
+                   College_short = recode(College_short,
+                                          "Woody L. Hunt College of Business Administration" = "Business Administration",
+                                          "College of Nursing" = "Nursing"),
                    Major_temp = coalesce(MajorDescription...5,MajorDescription...1),
                    MajorCode_temp = coalesce(MajorCode...6,MajorCode...2),
                    Level_temp = coalesce(Level...8,Level...4),
@@ -240,5 +257,5 @@ major_clean <- function(crosswalk, file2clean,fieldnames, ug = FALSE, collegenam
 
 }
 
-# major_clean(major_list,degrees_awarded,fieldnames = fieldnames,ug = FALSE)
+ #major_clean(major_list,degrees_awarded,fieldnames = fieldnames,ug = FALSE)
 
