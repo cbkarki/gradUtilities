@@ -25,7 +25,7 @@ devtools::install_github("cbkarki/gradUtilities")
 
 
 ## Load the library to R-environment.
-```{r eval=FALSE,echo=TRUE}
+```{r include = FALSE,echo=TRUE}
 library(gradUtilities)
 ```
 
