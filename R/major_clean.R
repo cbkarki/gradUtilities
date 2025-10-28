@@ -213,6 +213,7 @@ major_clean <- function(crosswalk, file2clean,fieldnames, ug = FALSE, collegenam
 
         # replacing the updates to the original field names in dat or the user file
         # long vs short names of the collegs
+        collegename = "long" # default
 
         collegename = match.arg(collegename)
         if (!collegename %in% c("long","short")) {
@@ -233,7 +234,7 @@ major_clean <- function(crosswalk, file2clean,fieldnames, ug = FALSE, collegenam
         # data clean names and ordering the coln names as of original file
         dat_clean <- dat_clean %>%
             select(!all_of(fieldnames)) %>%
-            rename(!!!rename_map) %>% # works like key:dictinory
+            rename(!!!rename_map) %>% # works like key:dictionary
             select(names(dat))
 
         # writing output

@@ -39,20 +39,27 @@
 #' term_diff(start_term,end_term)
 #' @export
 
-term_diff = function(start_term, end_term) {
+term_diff <- Vectorize(
+    function(start_term, end_term) {
 
-    # # check if the input terms are numeric
-    # if(is.character(start_term) | is.character(end_term)) {
-    #     start_term = as.numeric(start_term)
-    #     end_term = as.numeric(end_term)
-    # }
+        # term codes
+        tt = c(10, 20, 30)
+        yy = as.numeric(substr(start_term, 1, 4)):as.numeric(substr(end_term, 1, 4))
 
-    # year diff
-    year_diff = as.numeric(substr(end_term,1,4)) - as.numeric(substr(start_term, 1, 4))
-    term_diff = abs(as.numeric(substr(end_term,5,5)) - as.numeric(substr(start_term,5,5))) + 1 # +1 for making it inclusive
+        # sequence of terms and index
+        tt_seq =  paste0(rep(yy, each = 3), tt)
 
-    term_elapsed = 3 * year_diff + term_diff
+        # start index
+        start_ind = which(tt_seq == start_term)
 
-    return(term_elapsed)
+        # end index
+        end_ind = which(tt_seq == end_term)
 
-}
+        # term diff
+        term_elapsed = (end_ind - start_ind) + 1 # +1 for making it inclusive
+
+        return(term_elapsed)
+    },
+    vectorize.args = c("start_term", "end_term")
+)
+

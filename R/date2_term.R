@@ -34,6 +34,7 @@ date2_term = function(date,term = c("code","desc")) {
                   month(date) < 9 ~ paste0(year(date),30),
                   month(date) < 13 ~ paste0(year(date)+1,10)
                   )
+ term = "code"
  if(term == "code") {
      return(term_code)
  } else if (term == "desc") {
