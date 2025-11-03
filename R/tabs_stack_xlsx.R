@@ -2,7 +2,8 @@
 #'
 #' This function reads all sheets from an Excel file, skips a specified number of
 #' initial rows for each sheet if provided, else skips 0 initial rows by default, and stacks them row-wise into a single
-#' data frame. It also provides optional verbose output with dimensions of each sheet.
+#' data frame. It also provides optional verbose output with dimensions of each sheet.All the tabs should contain same amount
+#' of columns in them.
 #'
 #' @param path A character string. The path to the Excel (.xlsx or .xls) file.
 #' @param skip A numeric value. The number of rows to skip from the beginning of

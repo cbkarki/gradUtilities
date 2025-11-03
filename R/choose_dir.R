@@ -3,7 +3,7 @@
 #' This function opens a tcltk directory chooser and ensures it appears in front of other windows.
 #'
 #' @return A string containing the selected directory path, or NA if cancelled.
-#' @export
+#'
 #' @importFrom tcltk tktoplevel tkwm.withdraw tk_choose.dir tkdestroy
 choose_directory_tcltk <- function() {
     if (!requireNamespace("tcltk", quietly = TRUE)) {
