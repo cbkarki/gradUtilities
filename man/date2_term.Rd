@@ -19,13 +19,14 @@ This function will convert given Date to term either the term code or the term d
 date1 = as.Date("2025-10-16")
 date2_term(date1,"code")
 date2_term(date1,"desc")
+date2_term(date1) # default is "code"
 
 # example 2
 df = data.frame(date = c("2025-10-16","2025-1-29","2025-7-16"))
 
 df \%>\%
 dplyr::mutate(term_code = date2_term(date,"code"),
-term_desc = date2_term(date,"desc"))
+term_desc = term_desc(date,"desc"))
 
 }
 \author{

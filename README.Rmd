@@ -100,6 +100,6 @@ This function converts given terms to respective AY. Refer above for the academi
 # example 2
  df = data.frame(term = c(202410,202420, 202430))
  df %>%
- dplyr::mutate(term_desc = term2_ay(term))
+ dplyr::mutate(term_desc = term_desc(term))
  
 ```

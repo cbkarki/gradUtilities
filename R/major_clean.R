@@ -213,7 +213,6 @@ major_clean <- function(crosswalk, file2clean,fieldnames, ug = FALSE, collegenam
 
         # replacing the updates to the original field names in dat or the user file
         # long vs short names of the collegs
-        collegename = "long" # default
 
         collegename = match.arg(collegename)
         if (!collegename %in% c("long","short")) {

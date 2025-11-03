@@ -13,13 +13,14 @@
 #' date1 = as.Date("2025-10-16")
 #' date2_term(date1,"code")
 #' date2_term(date1,"desc")
+#' date2_term(date1) # default is "code"
 #'
 #' # example 2
 #' df = data.frame(date = c("2025-10-16","2025-1-29","2025-7-16"))
 #'
 #' df %>%
 #' dplyr::mutate(term_code = date2_term(date,"code"),
-#' term_desc = date2_term(date,"desc"))
+#' term_desc = term_desc(date,"desc"))
 #'
 #' @author
 #' Chitra Karki \email{cbkarki@miners.utep.edu}
@@ -34,7 +35,8 @@ date2_term = function(date,term = c("code","desc")) {
                   month(date) < 9 ~ paste0(year(date),30),
                   month(date) < 13 ~ paste0(year(date)+1,10)
                   )
- term = "code"
+ term = match.arg(term)
+
  if(term == "code") {
      return(term_code)
  } else if (term == "desc") {

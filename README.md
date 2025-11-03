@@ -48,7 +48,7 @@ major_clean(crosswalk,file2clean,fieldnames)
 
 The prompts popups are demonstrated in the image below.
 
-<img src="inst/images/major_clean.png" width="624" style="display: block; margin: auto;" />
+<img src="inst/images/major_clean.png" style="display: block; margin: auto;" />
 
 ## date2_term
 
@@ -126,9 +126,9 @@ records are presents in the file2clean other then in the crosswalk.
 # example 2
  df = data.frame(term = c(202410,202420, 202430))
  df %>%
- dplyr::mutate(term_desc = term2_ay(term))
-#>     term term_desc
-#> 1 202410 2023-2024
-#> 2 202420 2023-2024
-#> 3 202430 2023-2024
+ dplyr::mutate(term_desc = term_desc(term))
+#>     term   term_desc
+#> 1 202410   Fall 2023
+#> 2 202420 Spring 2024
+#> 3 202430 Summer 2024
 ```
