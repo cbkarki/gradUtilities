@@ -44,10 +44,11 @@ major_clean(crosswalk,file2clean,fieldnames)
 
 ```
 
-The prompts popups, are demonstrated in the image below.
+The prompts popups, are demonstrated in the images below.
 
 ```{r show-my-image, echo=FALSE, fig.align='center'}
-knitr::include_graphics("inst/images/major_clean.png")
+knitr::include_graphics("inst/images/major_clean1.png")
+knitr::include_graphics("inst/images/major_clean2.png")
 ```
 
 

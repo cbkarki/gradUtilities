@@ -46,9 +46,9 @@ fieldnames = c("MajorCode", "MajorDescription", "CollegeDescription", "Admission
 major_clean(crosswalk,file2clean,fieldnames)
 ```
 
-The prompts popups, are demonstrated in the image below.
+The prompts popups, are demonstrated in the images below.
 
-<img src="inst/images/major_clean.png" style="display: block; margin: auto;" />
+<img src="inst/images/major_clean1.png" style="display: block; margin: auto;" /><img src="inst/images/major_clean2.png" style="display: block; margin: auto;" />
 
 ## date2_term
 
