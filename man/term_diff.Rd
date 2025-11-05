@@ -43,7 +43,14 @@ start_term = c(202010,202020)
 end_term = c(202510)
 term_diff(start_term,end_term)
 
+start_term = c(202010,201920, 201030, 202410)
+end_term = c(202510,202430,201130, 202410)
+term_diff(start_term,end_term)
+
  start_term = c(202010,201920)
+end_term = c(202510,202430,202510)
+term_diff(start_term,end_term)
+start_term = c(202010,201920,202510)
 end_term = c(202510,202430)
 term_diff(start_term,end_term)
 }

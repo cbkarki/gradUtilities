@@ -90,7 +90,7 @@ The terms in the academic area 2023-2024 are coded as 202410, 202420, and 202430
 
 
 ## term2_ay
-This function converts given terms to respective AY. Refer above for the academic year and its terms encoding. The function can take up either character or integer term encoding. once the function is executed it will prompt, to write output as csv file in used picked directory if new records are presents in the file2clean other then in the crosswalk. \code{"?major_clean"}
+This function converts given terms to respective AY. Refer above for the academic year and its terms encoding. The function can take up either character or integer term encoding. 
 
 
 ```{r}
@@ -99,8 +99,44 @@ This function converts given terms to respective AY. Refer above for the academi
   term2_ay(term)
   
 # example 2
- df = data.frame(term = c(202410,202420, 202430))
+ df = data.frame(term = c(202410,202420, 202430, 201020, 201530))
  df %>%
- dplyr::mutate(term_desc = term_desc(term))
+ dplyr::mutate(AY = term2_ay(term))
  
 ```
+
+
+## term_diff
+
+This function calculates the number of academic terms between a `start_term` and an `end_term`. It assumes a standard academic year with three terms (Fall, Spring, Summer), where terms are represented by a four-digit year
+ followed by a two-digit term code (e.g., '202310' for Spring 2023, '202320'
+ for Summer 2023, and '202330' for Fall 2023). This is particularly useful
+ for calculating the elapsed time in terms between a student's enrollment and
+ graduation.
+The calculation is inclusive of both the start and end terms.
+```{r error=TRUE}
+# Calculate the number of terms between Fall 2022 and Spring 2023
+term_diff(start_term = 202230, end_term = 202310)
+
+# Calculate the number of terms for a student who enrolled in Spring 2020
+# and graduated in Fall 2023
+term_diff(start_term = 202010, end_term = 202330)
+
+# function can also takes vectors of terms
+start_term = c(202010,202020)
+end_term = c(202510)
+term_diff(start_term,end_term)
+
+start_term = c(202010,201920, 201030, 202410)
+end_term = c(202510,202430,201130, 202410)
+term_diff(start_term,end_term)
+
+start_term = c(202010,201920)
+end_term = c(202510,202430,202510)
+term_diff(start_term,end_term)
+start_term = c(202010,201920,202510)
+end_term = c(202510,202430)
+term_diff(start_term,end_term)
+
+```
+

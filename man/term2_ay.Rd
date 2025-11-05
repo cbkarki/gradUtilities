@@ -20,6 +20,11 @@ Converts term code to academic year. For instance 202510,202520,202530 are the t
  term = c("202510", "202520")
  term2_ay(term)
 
+ # example 2
+df = data.frame(term = c(202410,202420, 202430, 201020, 201530))
+df \%>\%
+   dplyr::mutate(AY = term2_ay(term))
+
 }
 \author{
 Chitra Karki \email{cbkarki@miners.utep.edu}

@@ -34,32 +34,50 @@
 #' end_term = c(202510)
 #' term_diff(start_term,end_term)
 #'
-#'  start_term = c(202010,201920)
-#' end_term = c(202510,202430)
+#'start_term = c(202010,201920, 201030, 202410)
+#'end_term = c(202510,202430,201130, 202410)
 #' term_diff(start_term,end_term)
+#'
+#'  start_term = c(202010,201920)
+#' end_term = c(202510,202430,202510)
+#' term_diff(start_term,end_term)
+
+#' start_term = c(202010,201920,202510)
+#'end_term = c(202510,202430)
+#' term_diff(start_term,end_term)
+
 #' @export
 
-term_diff <- Vectorize(
+term_diff =
     function(start_term, end_term) {
 
-        # term codes
-        tt = c(10, 20, 30)
-        yy = as.numeric(substr(start_term, 1, 4)):as.numeric(substr(end_term, 1, 4))
+    if (length(end_term) > 1 & (length(start_term) != length(end_term))) {
+        stop("For end_term more then one entrires, it is required to have same amout of entries in start_term and end_term, otherwise the
+             end_term will be recycled and results will be inconsistant.")
+    }
+    # Convert terms to numeric values for year and term part
+    start_year <- as.numeric(substr(start_term, 1, 4))
+    start_term_part <- as.numeric(substr(start_term, 5, 6))
 
-        # sequence of terms and index
-        tt_seq =  paste0(rep(yy, each = 3), tt)
+    end_year <- as.numeric(substr(end_term, 1, 4))
+    end_term_part <- as.numeric(substr(end_term, 5, 6))
 
-        # start index
-        start_ind = which(tt_seq == start_term)
+    # Calculate year difference
+    year_diff <- end_year - start_year
 
-        # end index
-        end_ind = which(tt_seq == end_term)
+    # Map term parts (10, 20, 30) to month equivalents (e.g., 1, 4, 7 for simplicity in calculation)
+    # This assumes 3 terms per year.
+    map_term_to_index <- function(term_part) {
+        # Using a numeric mapping where 10=1, 20=2, 30=3
+        ifelse(term_part == 10, 1, ifelse(term_part == 20, 2, 3))
+    }
 
-        # term diff
-        term_elapsed = (end_ind - start_ind) + 1 # +1 for making it inclusive
+    start_index <- map_term_to_index(start_term_part)
+    end_index <- map_term_to_index(end_term_part)
 
-        return(term_elapsed)
-    },
-    vectorize.args = c("start_term", "end_term")
-)
+    # Calculate total term difference.
+    # The (start_index - 1) makes the count inclusive from the start term to the end term.
+    total_terms <- (year_diff * 3) + (end_index - start_index) + 1
 
+    return(total_terms)
+}
