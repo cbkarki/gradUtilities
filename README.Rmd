@@ -122,21 +122,49 @@ term_diff(start_term = 202230, end_term = 202310)
 # and graduated in Fall 2023
 term_diff(start_term = 202010, end_term = 202330)
 
-# function can also takes vectors of terms
-start_term = c(202010,202020)
-end_term = c(202510)
-term_diff(start_term,end_term)
+ # function can also takes vectors of terms
+ # it is ok use an single term as the argument in end_term, because multiple students can graduate
+ # at the same term regardless of their starting term
+ start_term = c(202010,202020)
+ end_term = c(202510)
+ term_diff(start_term,end_term)
 
-start_term = c(202010,201920, 201030, 202410)
-end_term = c(202510,202430,201130, 202410)
-term_diff(start_term,end_term)
+ start_term = c(202010,201920, 201030, 202410)
+ end_term = c(202510,202430,201130, 202410)
+ term_diff(start_term,end_term)
 
-start_term = c(202010,201920)
-end_term = c(202510,202430,202510)
-term_diff(start_term,end_term)
-start_term = c(202010,201920,202510)
-end_term = c(202510,202430)
-term_diff(start_term,end_term)
+ # if the end_term and start_term arguments different lengths with an exception of single end_term,
+ # there will be an error
+ start_term = c(202010,201920)
+ end_term = c(202510,202430,202510)
+ term_diff(start_term,end_term)
+
+ start_term = c(202010,201920,202510)
+ end_term = c(202510,202430)
+ term_diff(start_term,end_term)
 
 ```
+
+
+## summarize_dataframe
+
+Summarize a Data Frame's Structure and Content
+
+Generates a comprehensive summary data frame detailing each column's name,
+type, missing values (count and percentage), number of unique values,
+and basic descriptive statistics (mean, median, min, max) for numeric columns.
+
+```{r}
+ # Example using the built-in 'iris' dataset
+  summarize_dataframe(iris)
+
+ # Example with mixed data types
+  test_data <- data.frame(
+    id = 1:10,
+    name = letters[1:10],
+    value = c(1, 2, NA, 4, 5, 6, 7, NA, 9, 10)
+  )
+  summarize_dataframe(test_data)
+```
+
 

@@ -154,25 +154,68 @@ term_diff(start_term = 202230, end_term = 202310)
 term_diff(start_term = 202010, end_term = 202330)
 #> [1] 12
 
-# function can also takes vectors of terms
-start_term = c(202010,202020)
-end_term = c(202510)
-term_diff(start_term,end_term)
+ # function can also takes vectors of terms
+ # it is ok use an single term as the argument in end_term, because multiple students can graduate
+ # at the same term regardless of their starting term
+ start_term = c(202010,202020)
+ end_term = c(202510)
+ term_diff(start_term,end_term)
 #> [1] 16 15
 
-start_term = c(202010,201920, 201030, 202410)
-end_term = c(202510,202430,201130, 202410)
-term_diff(start_term,end_term)
+ start_term = c(202010,201920, 201030, 202410)
+ end_term = c(202510,202430,201130, 202410)
+ term_diff(start_term,end_term)
 #> [1] 16 17  4  1
 
-start_term = c(202010,201920)
-end_term = c(202510,202430,202510)
-term_diff(start_term,end_term)
+ # if the end_term and start_term arguments different lengths with an exception of single end_term,
+ # there will be an error
+ start_term = c(202010,201920)
+ end_term = c(202510,202430,202510)
+ term_diff(start_term,end_term)
 #> Error in term_diff(start_term, end_term): For end_term more then one entrires, it is required to have same amout of entries in start_term and end_term, otherwise the
 #>              end_term will be recycled and results will be inconsistant.
-start_term = c(202010,201920,202510)
-end_term = c(202510,202430)
-term_diff(start_term,end_term)
+
+ start_term = c(202010,201920,202510)
+ end_term = c(202510,202430)
+ term_diff(start_term,end_term)
 #> Error in term_diff(start_term, end_term): For end_term more then one entrires, it is required to have same amout of entries in start_term and end_term, otherwise the
 #>              end_term will be recycled and results will be inconsistant.
+```
+
+## summarize_dataframe
+
+Summarize a Data Frame’s Structure and Content
+
+Generates a comprehensive summary data frame detailing each column’s
+name, type, missing values (count and percentage), number of unique
+values, and basic descriptive statistics (mean, median, min, max) for
+numeric columns.
+
+``` r
+ # Example using the built-in 'iris' dataset
+  summarize_dataframe(iris)
+#>   SN        Names Col_Type NA_Count NA_Per Unique_Values     Mean Median Min
+#> 1  1 Sepal.Length  numeric        0      0            35 5.843333   5.80 4.3
+#> 2  2  Sepal.Width  numeric        0      0            23 3.057333   3.00 2.0
+#> 3  3 Petal.Length  numeric        0      0            43 3.758000   4.35 1.0
+#> 4  4  Petal.Width  numeric        0      0            22 1.199333   1.30 0.1
+#> 5  5      Species   factor        0      0             3       NA     NA  NA
+#>   Max
+#> 1 7.9
+#> 2 4.4
+#> 3 6.9
+#> 4 2.5
+#> 5  NA
+
+ # Example with mixed data types
+  test_data <- data.frame(
+    id = 1:10,
+    name = letters[1:10],
+    value = c(1, 2, NA, 4, 5, 6, 7, NA, 9, 10)
+  )
+  summarize_dataframe(test_data)
+#>   SN Names  Col_Type NA_Count NA_Per Unique_Values Mean Median Min Max
+#> 1  1    id   integer        0      0            10  5.5    5.5   1  10
+#> 2  2  name character        0      0            10   NA     NA  NA  NA
+#> 3  3 value   numeric        2     20             9  5.5    5.5   1  10
 ```

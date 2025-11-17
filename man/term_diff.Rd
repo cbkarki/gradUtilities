@@ -51,7 +51,7 @@ term_diff(start_term,end_term)
 
 # if the end_term and start_term arguments different lengths with an exception of single end_term,
 # there will be an error
- start_term = c(202010,201920)
+start_term = c(202010,201920)
 end_term = c(202510,202430,202510)
 term_diff(start_term,end_term)
 start_term = c(202010,201920,202510)
