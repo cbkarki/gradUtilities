@@ -39,6 +39,8 @@ term_diff(start_term = 202230, end_term = 202310)
 term_diff(start_term = 202010, end_term = 202330)
 
 # function can also takes vectors of terms
+# it is ok use an single term as the argument in end_term, because multiple students can graduate
+# at the same term regardless of their starting term
 start_term = c(202010,202020)
 end_term = c(202510)
 term_diff(start_term,end_term)
@@ -47,6 +49,8 @@ start_term = c(202010,201920, 201030, 202410)
 end_term = c(202510,202430,201130, 202410)
 term_diff(start_term,end_term)
 
+# if the end_term and start_term arguments different lengths with an exception of single end_term,
+# there will be an error
  start_term = c(202010,201920)
 end_term = c(202510,202430,202510)
 term_diff(start_term,end_term)
