@@ -36,7 +36,7 @@
 #' @return If discrepancies are found, a data frame of unmatched records is returned
 #' and optionally saved to file. Otherwise, a message is printed.
 #'
-#' @importFrom dplyr mutate recode filter %>% arrange distinct anti_join select
+#' @importFrom dplyr mutate recode filter %>% arrange distinct anti_join select coalesce
 #'
 #' @importFrom readxl read_excel
 #' @importFrom openxlsx write.xlsx
@@ -172,13 +172,13 @@ major_clean <- function(crosswalk, file2clean,fieldnames, ug = FALSE, collegenam
         major_list_fact_table <-
             major_list %>%
             select(!c(Notes)) %>%
-            mutate(College_short = coalesce(College...7,College...3),
+            mutate(College_short = dplyr::coalesce(College...7,College...3),
                    College_short = recode(College_short,
                                           "Woody L. Hunt College of Business Administration" = "Business Administration",
                                           "College of Nursing" = "Nursing"),
-                   Major_temp = coalesce(MajorDescription...5,MajorDescription...1),
-                   MajorCode_temp = coalesce(MajorCode...6,MajorCode...2),
-                   Level_temp = coalesce(Level...8,Level...4),
+                   Major_temp = dplyr::coalesce(MajorDescription...5,MajorDescription...1),
+                   MajorCode_temp = dplyr::coalesce(MajorCode...6,MajorCode...2),
+                   Level_temp = dplyr::coalesce(Level...8,Level...4),
                    College_long = recode(College_short,
                                               "Business Administration" = "College of Business Admin.",
                                               "Education" = "College of Education",
