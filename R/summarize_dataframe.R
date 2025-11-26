@@ -57,5 +57,7 @@ summarize_dataframe = function(file) {
         }
     }
     row.names(df) = NULL
+    cat("Rows:", nrow(file), ", Columns:", ncol(file), "\n")
+
     return(df)
 }
